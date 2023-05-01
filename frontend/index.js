@@ -32,11 +32,14 @@ ws.onmessage = (MsgData) => {
 //將Input輸入的msg傳送回後端
 const input = document.getElementById("InputText");
 input.addEventListener("keyup", (e) => {
-  if (e.code == "Enter") {
-    // key:"Enter" , code:"Enter" keyCode:13
-    SendMessage(e.target.value);
-    e.target.value = "";
-  }
+  setTimeout(() => {
+    if (e.code == "Enter") {
+      // key:"Enter" , code:"Enter" keyCode:13
+
+      SendMessage(e.target.value);
+      e.target.value = "";
+    }
+  }, 500);
 });
 const SendMessage = (msg) => {
   ws.send(msg);
